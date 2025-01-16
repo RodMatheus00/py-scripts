@@ -18,7 +18,7 @@ if response_login.status_code == 200:
             "token": token
         }
         
-        response_listar = requests.post(url_listar_veiculos, json=data_listar)
+        response_listar = requests.post(url_listar_veiculos, json=data_listar)  
         
         if response_listar.status_code == 200:
             lista_veiculos = response_listar.json()
@@ -27,11 +27,13 @@ if response_login.status_code == 200:
 
             url_posicao = "https://api.getsec.com.br/posicao/listar/"
 
+
+
             dados_posicao_base = {
                 "token": token,
                 "id_veiculo": "2878",
-                "data_hora_inicio": "2024-11-08-00:00:00",
-                "data_hora_fim": "2099-11-08-23:59:59"
+                "data_hora_inicio": "2024-11-15-03:00:00",
+                "data_hora_fim": "2099-11-20-03:00:00"
             }
 
             all_dataframes = []
@@ -56,11 +58,11 @@ if response_login.status_code == 200:
                         print(f'Erro na API para o veículo {id_veiculo}:', resposta_posicao.get('mensagem'))
                 else:
                     print(f'Erro ao obter informações para o veículo {id_veiculo}:', response_posicao.status_code, response_posicao.text)
-
+    
             if all_dataframes:
                 final_df = pd.concat(all_dataframes, ignore_index=True)
                 print(final_df)
-            else:
+            else:   
                 print('Nenhum dado foi coletado.')
         else:
             print("Erro ao listar veículos:", response_listar.status_code, response_listar.text)
@@ -68,3 +70,4 @@ if response_login.status_code == 200:
         print("Erro: Token não encontrado na resposta de login.")
 else:
     print("Erro ao fazer login:", response_login.status_code, response_login.text)
+
