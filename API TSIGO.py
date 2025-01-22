@@ -2,10 +2,10 @@ import requests
 import pandas as pd
 from datetime import datetime, timedelta
 
-url_login = "https://api.getsec.com.br/login/entrar/"
+url_login = "ADICIONAR URL AQUI"
 dados_login = {
-    "usuario": "ti@transpiedadebc.com.br",
-    "senha": "Piedade123@"
+    "usuario": "ADICIONAR USUÁRIO AQUI",
+    "senha": "ADICIONAR SENHA AQUI"
 }
 
 response_login = requests.post(url_login, json=dados_login)
@@ -14,7 +14,7 @@ if response_login.status_code == 200:
     token = response_login.json().get("token")
 
     if token:
-        url_listar_veiculos = "https://api.getsec.com.br/veiculo/listar/"
+        url_listar_veiculos = "ADICIONAR URL AQUI"
         data_listar = {
             "token": token
         }
@@ -26,7 +26,7 @@ if response_login.status_code == 200:
             lista_ids_veiculos = [veiculo['id'] for veiculo in lista_veiculos]
             print(f"IDs dos veículos encontrados: {lista_ids_veiculos}")
 
-            url_posicao = "https://api.getsec.com.br/posicao/listar/"
+            url_posicao = "ADICIONAR URL AQUI"
 
             # Calcula os últimos 15 dias
             data_hora_fim = datetime.now()
