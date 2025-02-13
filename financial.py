@@ -40,5 +40,5 @@ df_month = df_janeiro
 
 df_month = df_month.groupby(["Mês"])["Valor"].sum().reset_index()
 
-# Exibir o DataFrame resultante
+# Exibir o DataFrame resultante.
 print(df_month)
