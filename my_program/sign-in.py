@@ -1,49 +1,49 @@
-import customtkinter
-import webbrowser
+import customtkinter as ctk
+from PIL import Image, ImageTk
 
-# Configuração do tema
-customtkinter.set_appearance_mode("dark")  # Tema escuro
-customtkinter.set_default_color_theme("dark-blue")
+# visual of the window
+ctk.set_appearance_mode("dark") 
+ctk.set_default_color_theme("dark-blue")
 
-# Criar a janela principal
-window = customtkinter.CTk()
+# geometry window
+window = ctk.CTk()
 window.geometry("1400x900")
 window.title("Tela de Login")
 
+# Load the background image
+bg_image = Image.open("C:/Users/Matheus.Rodrigues/Desktop/vscode/python/my_content/financeiro/my_program/background.jpg")
+bg_image = bg_image.resize((1400, 900), Image.Resampling.LANCZOS)
+bg_photo = ImageTk.PhotoImage(bg_image)
+
+canvas = ctk.CTkCanvas(window, width=1400, height=900)
+canvas.place(x=0, y=0)
+canvas.create_image(0, 0, anchor="nw", image=bg_photo)
+
+# functions
 def click():
     print("Logado!")
 
-def abrir_link():
-    webbrowser.open("https://www.seusite.com")  # Altere para seu link desejado
+# login window
+frame = ctk.CTkFrame(window, width=700, height=450, corner_radius=10)
+frame.place(relx=0.5, rely=0.5, anchor="center") 
 
-# Criar um frame centralizado (quadrado de 700x450)
-frame = customtkinter.CTkFrame(window, width=700, height=450, corner_radius=10)
-frame.place(relx=0.5, rely=0.5, anchor="center")  # Centraliza o frame
-
-# Título
-text = customtkinter.CTkLabel(frame, text="Tela de Login", font=("Montserrat", 46))
+text = ctk.CTkLabel(frame, text="Tela de Login", font=("Montserrat", 46))
 text.place(relx=0.5, rely=0.15, anchor="center")
 
-# Campo de e-mail
-email = customtkinter.CTkEntry(frame, placeholder_text="Username", width=300, font=("Montserrat", 16))
+email = ctk.CTkEntry(frame, placeholder_text="Username", width=300, font=("Montserrat", 16))
 email.place(relx=0.5, rely=0.35, anchor="center")
 
-# Campo de senha
-senha = customtkinter.CTkEntry(frame, placeholder_text="Password", show="*", width=300, font=("Montserrat", 16))
+senha = ctk.CTkEntry(frame, placeholder_text="Password", show="*", width=300, font=("Montserrat", 16))
 senha.place(relx=0.5, rely=0.45, anchor="center")
 
-# Checkbox "Remember login"
-checkbox = customtkinter.CTkCheckBox(frame, text="Remember", font=("Montserrat", 16))
+checkbox = ctk.CTkCheckBox(frame, text="Remember", font=("Montserrat", 16))
 checkbox.place(relx=0.37, rely=0.55, anchor="center")
 
-# Link clicável
-link = customtkinter.CTkLabel(frame, text="Esqueceu a senha?", text_color="darkblue", cursor="hand2", font=("Montserrat", 16))
-link.place(relx=0.5, rely=0.6, anchor="center")
-link.bind("<Button-1>", lambda e: abrir_link())  # Associa o clique ao link
+forgot = ctk.CTkLabel(frame, text="forgot your password?", text_color="darkblue", cursor="hand2", font=("Montserrat", 16))
+forgot.place(relx=0.6, rely=0.55, anchor="center")
 
-# Botão de login
-botao = customtkinter.CTkButton(frame, text="Sign in", text_color="light", bg_color="darkblue", command=click, width=200)
-botao.place(relx=0.5, rely=0.7, anchor="center")
+button = ctk.CTkButton(frame, text="Sign in", text_color="white", bg_color="darkblue", command=click, width=200)
+button.place(relx=0.5, rely=0.7, anchor="center")
 
-# Iniciar a aplicação
+# function metod to put windows in loop to work
 window.mainloop()
