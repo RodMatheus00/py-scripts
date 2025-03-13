@@ -12,3 +12,4 @@
 | **Sábado** | Projeto prático (Usar Pandas, NumPy, Matplotlib juntos) | Revisão da semana |
 | **Domingo** | Projeto maior ou aprofundamento em um tema que sentiu dificuldade | Descanso leve (ler artigos, ver vídeos) |
 
+teste
